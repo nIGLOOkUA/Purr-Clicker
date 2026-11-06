@@ -1,9 +1,48 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+        xmlns:vm="using:PurrClicker.ViewModels"
         x:Class="PurrClicker.MainWindow"
-        Title="PurrClicker">
-    Welcome to Avalonia!
+        x:DataType="vm:MainViewModel"
+        Title="Purr Clicker" Width="330" Height="370"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False" Background="#18181B">
+
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <StackPanel Margin="20" Spacing="12">
+        <TextBlock Text="Purr Clicker" FontSize="20" FontWeight="Bold" 
+                   Foreground="#F4F4F5" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+
+        <CheckBox Content="Клавіатура (без F, M, R, Esc)" 
+                  IsChecked="{Binding UseKeyboard}" 
+                  Foreground="#E4E4E7" FontSize="12"/>
+
+        <CheckBox Content="Кліки мишею" 
+                  IsChecked="{Binding UseMouse}" 
+                  Foreground="#E4E4E7" FontSize="12"/>
+
+        <Grid ColumnDefinitions="Auto,*,Auto,*" IsEnabled="{Binding UseMouse}" Margin="0,2,0,0">
+            <TextBlock Grid.Column="0" Text="X:" VerticalAlignment="Center" Foreground="#A1A1AA" Margin="0,0,6,0"/>
+            <NumericUpDown Grid.Column="1" Value="{Binding MouseX}" Minimum="0" Maximum="7680" Margin="0,0,12,0"/>
+            <TextBlock Grid.Column="2" Text="Y:" VerticalAlignment="Center" Foreground="#A1A1AA" Margin="0,0,6,0"/>
+            <NumericUpDown Grid.Column="3" Value="{Binding MouseY}" Minimum="0" Maximum="4320"/>
+        </Grid>
+
+        <Grid ColumnDefinitions="*,Auto">
+            <TextBlock Grid.Column="0" Text="Затримка (мс):" VerticalAlignment="Center" Foreground="#A1A1AA"/>
+            <NumericUpDown Grid.Column="1" Value="{Binding DelayMs}" Minimum="10" Maximum="2000" Width="120"/>
+        </Grid>
+
+        <TextBlock Text="{Binding StatusText}" Foreground="#A1A1AA" FontSize="11" 
+                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
+
+        <Button Command="{Binding ToggleFarmingCommand}" 
+                HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                Height="42" CornerRadius="6" Margin="0,5,0,0"
+                Background="#2563EB" Foreground="White" FontWeight="SemiBold">
+            <TextBlock Text="Старт / Стоп" />
+        </Button>
+    </StackPanel>
 </Window>

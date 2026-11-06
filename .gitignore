@@ -1,0 +1,75 @@
+# ==========================================
+# 1. Сміття збірки C# / .NET (Build Output)
+# ==========================================
+[Bb]in/
+[Oo]bj/
+artifacts/
+nupkgs/
+*.nupkg
+*.snupkg
+TestResults/
+
+# Згенеровані файли прив'язок XAML / Avalonia
+*.g.cs
+*.g.i.cs
+.avalonia/
+
+
+# ==========================================
+# 2. Середовища розробки (IDEs & Editors)
+# ==========================================
+
+# Visual Studio
+.vs/
+*.user
+*.csproj.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Mono / VS for Mac
+*.userprefs
+*.mono-crash-*.json
+
+# ==========================================
+# 3. Локальні конфігурації та секрети
+# ==========================================
+# Не комітимо файли з ключами та паролями для розробки
+appsettings.Local.json
+appsettings.Development.json
+*.local.json
+
+# ==========================================
+# 4. Логи та тимчасові файли
+# ==========================================
+*.log
+project.lock.json
+project.fragment.lock.json
+
+# ==========================================
+# 5. Системне сміття (Operating Systems)
+# ==========================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Linux / Vim / Emacs
+*.swp
+*.swo
+*~
